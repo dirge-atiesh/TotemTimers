@@ -1,3 +1,8 @@
+2.00
+    - Updated TOC for proper bcc version
+    - Added Totem of Wrath
+    - Added Wrath of Air Totem
+
 1.08
     - Fixed Reincarnation maximum duration display
     - Added pulse for Grounding Totem
@@ -149,7 +154,7 @@
     - Fixed weapon buff tracker only showing one buff
     - Added cooldown for Spirit Link Totem
 10.4.8
-    - Fixed timer bars    
+    - Fixed timer bars
 10.4.6
     - Fixed time on buttons disappearing if totem cooldown is shown
     - Totem range now properly accounts for buffs overwriting totem buffs
@@ -176,7 +181,7 @@
       Middle Button: Focus target
     - Added "border timers", small vertical bars to the side of a button, for specific spells, currently Hex cooldown and Unleash Flame duration (shown at Earth/Flame Shock CD timer).
       Can be changed in width or enabled/disabled in TT General Config.
-      If you use ButtonFacade or smth similar to display round buttons check "Round Buttons" in TT General Config      
+      If you use ButtonFacade or smth similar to display round buttons check "Round Buttons" in TT General Config
 10.4 Beta 1
     - Loads through AddonLoader (untested)
     - Fixed totem bars not movable if set to "always visible"
@@ -184,7 +189,7 @@
     - Enabled CD for Tremor Totem
     - Added Spirit Link Totem
     - Fixed combat log parsing for 4.1.
-    
+
 10.3.15
     - Fixed error messages on loading localization files
 10.3.14
@@ -206,7 +211,7 @@
     - Improved cooldown layout code
     - Added option to show Flame Shock duration and Maelstrom above cooldowns
     - Added option to make cooldown buttons clickthrough
-    - Added main tank menu to Earth Shock tracker and several options for it     
+    - Added main tank menu to Earth Shock tracker and several options for it
 10.3.10
     - Fix for totem menu keybinds
     - Bugfix for inspecting group members
@@ -236,7 +241,7 @@
     - Added aura for Fulmination
     - Lava Surge aura and Fulmination aura are not tied to Elemental cooldowns, moved options to general options
     - "Glow" option for auras now extends to action buttons on the default action bar, Bartender4, and Dominos
-    - Fix for applying totems set by RaidTotems    
+    - Fix for applying totems set by RaidTotems
 10.3.3
     - Fix weapon tracker for shamans below lvl 75
     - Lava Surge: Lava Burst cooldown timer resets on proc, can optionally glow and show an aura around your character using the built-in aura alert
@@ -250,7 +255,7 @@
     - Changed Magma Totem for Enhancement cooldowns to Searing Totem
     - Temporarily disabled checks for party totem range
 
-    
+
 10.2.4
     - Bugfixes
 10.2.3
@@ -265,7 +270,7 @@
     - Cooldowns can be toggled individually
     - Cooldown order can be changed
     - Changed Shock CD Button to have Flame Shock on rightclick and Frost Shock on Middle Click
-    - All Cooldown options are now separate for each spec (except frame position)    
+    - All Cooldown options are now separate for each spec (except frame position)
     - changed totem range detection:
         Totems that give buffs are still checked for their or a similar buff
         For totems that dont give buffs range is calculated by coordinates if coordinates are available
@@ -277,7 +282,7 @@
     - Optional big pulse effect if timer expires
     - Timers continue flashing for 5 secs after expiring
 
-    
+
 10.1.11
     - Temporary 3.3.3 bugfix
 10.1.10
@@ -292,7 +297,7 @@
     - Changed Reincarnation max cd to 30 min
     - Removed Fire Nova from internal totem list,
       that may or may not fix the problems some people are reporting regarding the fire totem timer
-    - String splitting for Earth Shield target display should now be unicode aware    
+    - String splitting for Earth Shield target display should now be unicode aware
 10.1.5
     - Fixed some maelstrom bar scaling issues
     - Added self-only Icy Talons buff of DKs to Windfury buff check
@@ -307,8 +312,8 @@
 10.1
     - Introducing new cast buttons which change their spells according to selected totems, configurable in options gui.
       Manual on curse and wowinterface.
-    - Added option to hide TT in vehicles    
-    - Added name of the person having your Earth Shield to tracker    
+    - Added option to hide TT in vehicles
+    - Added name of the person having your Earth Shield to tracker
     - Readded hiding of totems from the menus
     - Readded rightclick spell to weapon tracker (refer to tooltips on how to set it up)
     - Ctrl-Leftclick removes weapon buffs
@@ -321,8 +326,8 @@
     - Hopefully fixed "you aren't in a party" spam
     - Fixed weapon tracker showing wrong buffs with two equal weapons equipped
     - Hopefully fixed ankh tracker showing its cooldown frame while reincarnation is not on cd
-    - Added options to change timer font colors and timer bar colors       
-    - Added PARTY_LEADER_CHANGED-event to Earth Shield Tracker unit update for recast    
+    - Added options to change timer font colors and timer bar colors
+    - Added PARTY_LEADER_CHANGED-event to Earth Shield Tracker unit update for recast
     - Localization moved to CurseForge.com localization system
     - Added French localization, thx to ckeurk
 
@@ -341,7 +346,7 @@
        if you selected one of the buff combos (wf/fl, wf/fb) cast twice).
     - Spell assigned to the Weapon Buff button is saved for each talent spec and is changed on
       talent spec switch
-    - Set totem order by shift-dragging, you should even be able to drag a totem onto your actionbars   
+    - Set totem order by shift-dragging, you should even be able to drag a totem onto your actionbars
     - Frame positions saved in settings instead of cache only
     - Reenabled textures for warnings
     - Warnings now sent through LibSink
