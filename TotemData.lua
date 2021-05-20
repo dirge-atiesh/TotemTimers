@@ -16,11 +16,13 @@ TotemTimers.SpellIDs = {
 
     Tremor = 8143, --
     Stoneskin = 8071, --
+    StoneskinR2 = 8154, -- For boosted shamans missing r1
     Stoneclaw = 5730, --
     StrengthOfEarth = 8075, --
     EarthBind = 2484, --
 
     Searing = 3599, --
+    SearingR2 = 6363, -- For boosted shamans missing r1
     FireNova = 1535, --
     Magma = 8190, --
     FrostResistance = 8181, --
@@ -28,6 +30,7 @@ TotemTimers.SpellIDs = {
     Wrath = 30706, --
 
     HealingStream = 5394, --
+    HealingStreamR2 = 6375, -- For boosted shamans missing r1
     ManaTide = 16190, --
     PoisonCleansing = 8166, --
     DiseaseCleansing = 8170, --

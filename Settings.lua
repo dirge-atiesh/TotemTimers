@@ -41,8 +41,8 @@ end
 
 
 SettingsFunctions = {
-    ShowTimerBars = 
-        function(value, Timers) 
+    ShowTimerBars =
+        function(value, Timers)
             for _,timer in pairs(Timers) do
                 timer.visibleTimerBars = value
                 for n,t in pairs(timer.timers) do
@@ -51,7 +51,7 @@ SettingsFunctions = {
                     else
                         timer.timerBars[n].background:Hide()
                         timer.timerBars[n]:SetValue(0)
-                    end					
+                    end
                 end
             end
             --[[ TotemTimers.fs.visibleTimerBars = true
@@ -60,7 +60,7 @@ SettingsFunctions = {
             end --]]
         end,
 
-    FlashRed = 
+    FlashRed =
         function(value, Timers)
         	for _,timer in pairs(Timers) do
                 timer.flashRed = value
@@ -75,16 +75,16 @@ SettingsFunctions = {
                 end
             end
         end,
-        
-    TimerSize = 
+
+    TimerSize =
         function(value, Timers)
             local v = value
     		for e=1,4 do
     			Timers[e]:SetScale(v/36)
     		end
         end,
-        
-    TrackerSize = 
+
+    TrackerSize =
         function(value, Timers)
     		for e=TRACKER_START, TRACKER_END do
     			Timers[e]:SetScale(value/36)
@@ -96,9 +96,9 @@ SettingsFunctions = {
     		for e=1,4 do
     			Timers[e]:SetTimeHeight(value)
                 Timers[e].button.time:SetFont(Timers[e].button.time:GetFont(),value+5,"OUTLINE")
-    		end        
+    		end
         end,
-        
+
     TrackerTimeHeight =
         function(value, Timers)
     		for e=TRACKER_START, TRACKER_END do
@@ -110,14 +110,14 @@ SettingsFunctions = {
                 Timers[e].button.time:SetFont(Timers[e].button.time:GetFont(),value+5,"OUTLINE")
     		end ]]
         end,
-        
-    TimerSpacing = 
+
+    TimerSpacing =
         function(value, Timers)
     		for e=1,4 do
     			Timers[e]:SetSpacing(value)
     		end
         end,
-        
+
     TrackerSpacing =
         function(value, Timers)
     		for e=TRACKER_START, TRACKER_END do
@@ -127,14 +127,14 @@ SettingsFunctions = {
     			Timers[e]:SetSpacing(value)
     		end ]]
     end,
-        
-    TimerTimeSpacing = 
+
+    TimerTimeSpacing =
         function(value, Timers)
     		for e=1,4 do
     			Timers[e]:SetTimeSpacing(value)
     		end
         end,
-        
+
     TrackerTimeSpacing =
         function(value, Timers)
     		for e=TRACKER_START, TRACKER_END do
@@ -144,22 +144,22 @@ SettingsFunctions = {
     			Timers[e]:SetTimeSpacing(value)
     		end ]]
         end,
-        
-    TimerTimePos = 
+
+    TimerTimePos =
         function(value, Timers)
     		for e=1,4 do
     			Timers[e]:SetTimerBarPos(value)
-    		end  
+    		end
         end,
-        
+
     TrackerTimePos =
         function(value, Timers)
     		for e=TRACKER_START, TRACKER_END do
     			Timers[e]:SetTimerBarPos(value)
     		end
         end,
-    
-    AnkhTracker = 
+
+    AnkhTracker =
         function(value, Timers)
     		if value and AvailableSpells[SpellIDs.Ankh] then
     			Timers[5]:Activate()
@@ -168,7 +168,7 @@ SettingsFunctions = {
     		end
     		TotemTimers.OrderTrackers()
         end,
-        
+
     ShieldTracker =
         function(value, Timers)
             Timers[6].ActiveWhileHidden = TotemTimers.ActiveProfile.ActivateHiddenTimers and not value
@@ -176,15 +176,15 @@ SettingsFunctions = {
     			Timers[6]:Activate()
     		else
     			Timers[6]:Deactivate()
-    		end            
-    		TotemTimers.OrderTrackers()		
+    		end
+    		TotemTimers.OrderTrackers()
         end,
 
     ShieldChargesOnly =
         function(value, Timers)
             TotemTimers.SetShieldUpdate()
         end,
-        
+
     --[[ EarthShieldTracker =
         function(value, Timers)
             Timers[7].ActiveWhileHidden = TotemTimers.ActiveProfile.ActivateHiddenTimers and not value
@@ -227,9 +227,9 @@ SettingsFunctions = {
             Timers[8].button:SetAttribute("spell1", value)
         end
     end,
-        
-       
-     
+
+
+
     --[[ HideBlizzTimers =
         function(value)
             if value then
@@ -244,17 +244,17 @@ SettingsFunctions = {
                 TotemFrame:SetScript("OnShow", TotemFrameScript)
             end
         end, ]]
-            
+
     --[[ ShieldLeftButton =
         function(value, Timers)
     		Timers[6].button:SetAttribute("*spell1",value)
         end,
-        
+
     ShieldRightButton =
         function(value, Timers)
     		Timers[6].button:SetAttribute("*spell2", value)
         end,
-            
+
     ShieldMiddleButton =
         function(value, Timers)
     		Timers[6].button:SetAttribute("*spell3", value)
@@ -264,14 +264,14 @@ SettingsFunctions = {
 
     Order =
         function(value, Timers)
-    		for i=1,4 do Timers[i] = _G["XiTimers_Timer"..value[i]].timer end            
+    		for i=1,4 do Timers[i] = _G["XiTimers_Timer"..value[i]].timer end
     		TotemTimers.OrderTimers()
         end,
-    
+
     OpenOnRightclick =
         function(value, Timers)
             for i = 1,4 do
-                if value and not TotemTimers.ActiveProfile.MenusAlwaysVisible then 
+                if value and not TotemTimers.ActiveProfile.MenusAlwaysVisible then
                     Timers[i].button:SetAttribute("OpenMenu", "RightButton")
                     --Timers[i].button:SetAttribute("*macrotext3", "/script XiTimers.timers["..i.."].stopQuiet = true DestroyTotem("..Timers[i].nr..")")
 					Timers[i].button:SetAttribute("*macrotext3", "/cast Totemic Recall")
@@ -284,7 +284,7 @@ SettingsFunctions = {
                 end
             end
         end,
-    
+
     MenusAlwaysVisible =
         function(value, Timers)
             if value then
@@ -296,7 +296,7 @@ SettingsFunctions = {
                 TTActionBars.bars[i]:SetAlwaysVisible(value)
             end
         end,
-     
+
     MiniIcons =
         function(value, Timers)
             for e=1,4 do
@@ -307,21 +307,21 @@ SettingsFunctions = {
                 end
             end
         end,
-        
+
     Lock =
         function(value, Timers)
             for k,v in pairs(Timers) do
                 v.locked = value
             end
         end,
-        
+
     Show =
         function(value, Timers)
-            if value then 
-                for i=1,4 do 
-                    if (Timers[i].nr == FIRE_TOTEM_SLOT and AvailableSpells[SpellIDs.Searing])
-                      or (Timers[i].nr == EARTH_TOTEM_SLOT and (AvailableSpells[SpellIDs.Stoneskin] or AvailableSpells[SpellIDs.Earthbind] or AvailableSpells[SpellIDs.StoneBulwark]))
-                      or (Timers[i].nr == WATER_TOTEM_SLOT and AvailableSpells[SpellIDs.HealingStream])
+            if value then
+                for i=1,4 do
+                   if (Timers[i].nr == FIRE_TOTEM_SLOT and (AvailableSpells[SpellIDs.Searing] or AvailableSpells[SpellIDs.SearingR2]))
+                      or (Timers[i].nr == EARTH_TOTEM_SLOT and (AvailableSpells[SpellIDs.Stoneskin] or AvailableSpells[SpellIDs.StoneskinR2] or AvailableSpells[SpellIDs.Earthbind] or AvailableSpells[SpellIDs.StoneBulwark]))
+                      or (Timers[i].nr == WATER_TOTEM_SLOT and (AvailableSpells[SpellIDs.HealingStream] or AvailableSpells[SpellIDs.HealingStreamR2]))
                       or (Timers[i].nr == AIR_TOTEM_SLOT and (AvailableSpells[SpellIDs.Grounding] or AvailableSpells[SpellIDs.NatureResistance] or AvailableSpells[SpellIDs.Windfury])) then
                         Timers[i]:Activate()
                     end
@@ -335,14 +335,14 @@ SettingsFunctions = {
                 --TotemTimersFrame:Hide()
             end
         end,
-     
+
     ProcFlash =
         function(value, Timers)
             for i=1,4 do
                 Timers[i].procFlash = value
             end
         end,
-     
+
     TimeFont =
         function(value, Timers)
             local font = LSM:Fetch("font", value)
@@ -352,9 +352,9 @@ SettingsFunctions = {
                 end
             end
         end,
-        
+
     TimerBarTexture =
-        function(value, Timers) 
+        function(value, Timers)
             local texture = LSM:Fetch("statusbar", value)
             if texture then
                 for _,timer in pairs(Timers) do
@@ -362,7 +362,7 @@ SettingsFunctions = {
                 end
             end
         end,
-        
+
     ColorTimerBars =
         function(value, Timers)
             for i=1,#Timers do
@@ -375,7 +375,7 @@ SettingsFunctions = {
                 end
             end
         end,
-        
+
     ShowCooldowns =
         function(value, Timers)
             if TotemTimers_IsSetUp then
@@ -383,7 +383,7 @@ SettingsFunctions = {
                 for i = 1,4 do TotemTimers.TotemEvent(Timers[i].button,"SPELL_UPDATE_COOLDOWN", i) end
             end
         end,
-        
+
     BarBindings =
         function(value, Timers)
             for i=1,4 do
@@ -404,17 +404,17 @@ SettingsFunctions = {
                 end
             end
         end,
-        
-   
+
+
     --[[ EnhanceCDs =
         function(value)
             if value then
-                TotemTimers.ActivateEnhanceCDs() 
+                TotemTimers.ActivateEnhanceCDs()
             else
                 TotemTimers.DeactivateEnhanceCDs()
             end
         end,
-        
+
     EnhanceCDsSize =
         function(value)
 			local Timers = TotemTimers.EnhanceCDs
@@ -430,8 +430,8 @@ SettingsFunctions = {
 				TotemTimers.LongCooldowns[i]:SetScale(value/36)
 			end
         end,
-        
-    EnhanceCDsTimeHeight = 
+
+    EnhanceCDsTimeHeight =
          function(value)
 			local AllTimers = {TotemTimers.EnhanceCDs, TotemTimers.LongCooldowns}
 			for t=1,2 do
@@ -440,13 +440,13 @@ SettingsFunctions = {
 					Timers[e]:SetTimeHeight(value)
 					local font, _ = Timers[e].button.time:GetFont()
 					Timers[e].button.time:SetFont(font, value+5, "OUTLINE")
-				end 
+				end
 			end
             TotemTimers.LayoutEnhanceCDs()
 			TotemTimers.LayoutLongCooldowns()
         end,
-        
-    EnhanceCDsMaelstromHeight = 
+
+    EnhanceCDsMaelstromHeight =
         function(value, Timers)
             TotemTimers.maelstrom:SetHeight(value)
             TotemTimers.maelstrom.background:SetHeight(value)
@@ -464,8 +464,8 @@ SettingsFunctions = {
             _G["XiTimers_TimerBar17_1Time"]:SetFont(font, value, outline)
             TotemTimers.LayoutEnhanceCDs()
         end, --]]
-        
-    Tooltips =  
+
+    Tooltips =
         function(value, Timers)
             for i=1,TRACKER_END do
                 Timers[i].button:SetAttribute("tooltip", value)
@@ -474,7 +474,7 @@ SettingsFunctions = {
                 TTActionBars.bars[i]:SetTooltip(value)
             end
         end,
-        
+
     TotemTimerBarWidth =
         function(value, Timers)
             for i=1,4 do
@@ -483,7 +483,7 @@ SettingsFunctions = {
                 end
             end
         end,
-        
+
     TrackerTimerBarWidth =
         function(value, Timers)
             for i=TRACKER_START,TRACKER_END do
@@ -497,14 +497,14 @@ SettingsFunctions = {
                 end
             end ]]
         end,
-        
+
     ActivateHiddenTimers =
         function(value, Timers)
             TotemTimers.ProcessSetting("ShieldTracker")
             -- TotemTimers.ProcessSetting("EarthShieldTracker")
             TotemTimers.ProcessSetting("WeaponTracker")
         end,
-        
+
     ShowKeybinds =
         function(value, Timers)
             for _,t in pairs(Timers) do
@@ -515,8 +515,8 @@ SettingsFunctions = {
                 end
             end
         end,
-        
-    FramePositions = 
+
+    FramePositions =
         function(value, Timers)
             for name, pos in pairs(value) do
                 if _G[name] and pos and pos[1] then
@@ -541,13 +541,13 @@ SettingsFunctions = {
         end
         TotemTimers.ProcessSetting("LastWeaponEnchant2")
     end,
-        
+
     --[[ ESMainTankMenuDirection =
-        function(value, Timers) 
+        function(value, Timers)
             TTActionBars.bars[5]:SetDirection(value, TotemTimers.ActiveProfile.TrackerArrange)
             --if #TTActionBars.bars > 5 then TotemTimers.ProcessSetting("MultiSpellBarDirection") end
         end,  --]]
-        
+
     --[[EnhanceCDsOOCAlpha =
         function(value)
 			local Timers = TotemTimers.EnhanceCDs
@@ -557,8 +557,8 @@ SettingsFunctions = {
             TotemTimers.maelstrom:SetAlpha(value)
             XiTimers.invokeOOCFader()
         end, --]]
-        
-    TimersOnButtons = 
+
+    TimersOnButtons =
         function(value, Timers)
             for i=1,#Timers do
                 if i ~= 21 then
@@ -570,8 +570,8 @@ SettingsFunctions = {
             end
             TotemTimers.ProcessSetting("EnhanceCDsMaelstromHeight")
         end,
-    
-    TimeColor = 
+
+    TimeColor =
         function(value, Timers)
             for i=1,#Timers do
                 Timers[i].button.time:SetTextColor(value.r, value.g, value.b, 1)
@@ -581,8 +581,8 @@ SettingsFunctions = {
                 end
             end
         end,
-        
-   
+
+
     --[[ HideInVehicle =
         function(value, Timers)
             if value then
@@ -597,7 +597,7 @@ SettingsFunctions = {
                 --UnregisterStateDriver(TotemTimers.MB,"invehicle")
             end
         end, --]]
-   
+
     StopPulse =
         function(value, Timers)
             for i = 1,4 do
@@ -607,7 +607,7 @@ SettingsFunctions = {
                 Timers[i].StopPulse = value
             end
         end,
-        
+
     --[[ HideEnhanceCDsOOC =
         function(value)
 			local Timers = TotemTimers.EnhanceCDs
@@ -617,8 +617,8 @@ SettingsFunctions = {
             end
             TotemTimers.ConfigEnhanceCDs()
         end, --]]
-        
-        
+
+
     --[[ EarthShieldTargetName =
         function(value, Timers)
             if value then
@@ -627,7 +627,7 @@ SettingsFunctions = {
                 Timers[7].nameframe:Hide()
             end
         end, ]]
-        
+
     --[[ EnhanceCDs_Clickthrough =
         function(value)
 			local Timers = TotemTimers.EnhanceCDs
@@ -641,55 +641,55 @@ SettingsFunctions = {
             TotemTimers.maelstrom:EnableMouse(not value)
             TotemTimers.maelstrombutton:EnableMouse(not value)
         end, --]]
-        
-    Timer_Clickthrough = 
+
+    Timer_Clickthrough =
         function(value, Timers)
             for i = 1,4 do
                 Timers[i].button:EnableMouse(not value)
             end
         end,
-        
-    Tracker_Clickthrough = 
+
+    Tracker_Clickthrough =
         function(value, Timers)
             for i = TRACKER_START,TRACKER_END do
                 Timers[i].button:EnableMouse(not value)
             end
         end,
-        
+
     --[[ ESChargesOnly =
         function(value, Timers)
             TotemTimers.SetEarthShieldUpdate()
         end, --]]
-        
+
     --[[ CrowdControlSize =
         function(value, Timers)
     		TotemTimers.CrowdControl[1]:SetScale(value/36)
     		TotemTimers.CrowdControl[2]:SetScale(value/36)
         end,
-        
+
     CrowdControlTimePos =
         function(value, Timers)
   			TotemTimers.CrowdControl[1]:SetTimerBarPos(value)
 			TotemTimers.CrowdControl[2]:SetTimerBarPos(value)
         end,
-        
-    CrowdControlClickthrough = 
+
+    CrowdControlClickthrough =
         function(value, Timers)
             TotemTimers.CrowdControl[1].button:EnableMouse(not value)
-			TotemTimers.CrowdControl[2].button:EnableMouse(not value)            
+			TotemTimers.CrowdControl[2].button:EnableMouse(not value)
         end,
-        
+
     CrowdControlEnable =
         function(value)
 			local Timers = TotemTimers.CrowdControl
-            if not value then				
+            if not value then
                 Timers[1]:Deactivate()
                 Timers[2]:Deactivate()
                 TotemTimers_CrowdControlFrame:Hide()
             else
                 if TotemTimers.ActiveProfile.CrowdControlHex and AvailableSpells[SpellIDs.Hex] then Timers[1]:Activate() else Timers[1]:Deactivate() end
                 if TotemTimers.ActiveProfile.CrowdControlBindElemental and AvailableSpells[SpellIDs.BindElemental] then Timers[2]:Activate() else Timers[2]:Deactivate() end
-                TotemTimers_CrowdControlFrame:Show() 
+                TotemTimers_CrowdControlFrame:Show()
             end
         end,
 
@@ -697,13 +697,13 @@ SettingsFunctions = {
 		function(value, Timers)
 			TotemTimers.ActivateLongCooldowns(value)
 		end,
-		
+
 	LongCooldownsArrange =
 		function(value, Timers)
 			TotemTimers.LayoutLongCooldowns()
 		end,
-		
-	CooldownSpacing = 
+
+	CooldownSpacing =
         function(value, Timers)
     		for k,v in pairs(TotemTimers.LongCooldowns) do
     			v:SetSpacing(value)
@@ -712,9 +712,7 @@ SettingsFunctions = {
 				v:SetSpacing(value)
 			end
         end, --]]
-        
+
 }
 
 SettingsFunctions.ReverseBarBindings = SettingsFunctions.BarBindings
-
-
