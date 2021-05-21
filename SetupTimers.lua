@@ -36,12 +36,12 @@ function TotemTimers.CreateTimers()
         tt.playerEvents[1] = "UNIT_SPELLCAST_SUCCEEDED"
         --tt.events[6] = "UNIT_AURA"
         --tt.events[7] = "RAID_ROSTER_UPDATE"
-        
+
 		tt.button.anchorframe = TotemTimersFrame
 		tt.button:RegisterForClicks("AnyDown")
 		tt.button:SetAttribute("*type2", "macro")
 		tt.button:SetAttribute("*type3", "macro")
-		--tt.button:SetAttribute("*macrotext2", "/script DestroyTotem("..e..")")		
+		--tt.button:SetAttribute("*macrotext2", "/script DestroyTotem("..e..")")
 		tt.button:SetAttribute("*macrotext2", "/cast Totemic Recall")
 		tt.button:SetAttribute("*macrotext3", "/cast Totemic Recall")
 		tt.button:SetAttribute("*type1", "spell")
@@ -66,7 +66,7 @@ function TotemTimers.CreateTimers()
 		tt.button:SetAttribute("_onleave", [[ control:CallMethod("HideTooltip")]])
 		tt.button:SetAttribute("_onattributechanged", [[ if name=="hide" then
                                                              control:ChildUpdate("show", false)
-                                                         elseif name == "*spell1" then 
+                                                         elseif name == "*spell1" then
                                                             control:CallMethod("UpdateMiniIconAndProfile")
                                                          elseif name == "state-invehicle" then
                                                             if value == "show" and self:GetAttribute("active") then
@@ -87,7 +87,7 @@ function TotemTimers.CreateTimers()
             XiTimers.Activate(self)
             TotemTimers.TotemEvent(self.button, "PLAYER_TOTEM_UPDATE", self.nr)
             TotemTimers.TotemEvent(self.button, "SPELL_UPDATE_COOLDOWN", self.nr)
-			if not TotemTimers.ActiveProfile.LastTotems[self.nr] or 
+			if not TotemTimers.ActiveProfile.LastTotems[self.nr] or
 			  (not AvailableSpells[TotemTimers.ActiveProfile.LastTotems[self.nr]] and not AvailableSpells[NameToSpellID[TotemTimers.ActiveProfile.LastTotems[self.nr]]]) then
 				local save = TotemTimers.ActiveProfile.LastTotems[self.nr]
 				--[[when switching specs this part gets executed several times, once for switching and then for each talent (because of events fired)
@@ -107,7 +107,7 @@ function TotemTimers.CreateTimers()
 				self.button.icon:SetTexture(GetSpellTexture(TotemTimers.ActiveProfile.LastTotems[self.nr]))
 			end
         end
-        
+
         --[[ tt.Update = function(self, elapsed)
             XiTimers.Update(self, elapsed)
             if self.timers[1] > 0 then
@@ -121,14 +121,14 @@ function TotemTimers.CreateTimers()
                 end
             end
         end ]]
-        
+
         --tt.button:UpdateMiniIconAndProfile()
         tt.button:SetScript("OnDragStop", function(self)
                 XiTimers.StopMoving(self)
                 if not InCombatLockdown() then TotemTimers.PositionCastButtons() end
                 if not InCombatLockdown() then self:SetAttribute("hide", true) end
             end)
-			            
+
 	end
 	TotemTimers.CreateCastButtons()
 end
@@ -159,7 +159,7 @@ function TotemTimers:TotemEvent(event, arg1, arg2, arg3)
     if event == "PLAYER_TOTEM_UPDATE" then
     	if self.element == arg1 then
     		local _, totem, startTime, duration, icon = GetTotemInfo(arg1)
-            totem = string.gsub(totem, " [IV]*$", "") -- strip spell rank from name
+                totem = string.gsub(totem, " [IV]*$", "") -- strip spell rank from name
             totem = NameToSpellID[totem]
     		if duration > 0 and totem and TotemData[totem] then
     			self.icons[1]:SetTexture(icon)
@@ -189,7 +189,7 @@ function TotemTimers:TotemEvent(event, arg1, arg2, arg3)
             else
                 --[[ TotemTimers.ResetRange(self.element)
                 self.rangeCount:SetText("") --]]
-                if self.timer.timers[1] > 0 then 
+                if self.timer.timers[1] > 0 then
                     self.timer:Stop(1)
                 end
     		end
@@ -216,7 +216,7 @@ function TotemTimers:TotemEvent(event, arg1, arg2, arg3)
                     end
                 elseif self.timer.timers[nr] > 0 then
                     self.timer:Stop(nr)
-                end 
+                end
             end
         else
             for i = 2, self.timer.nrOfTimers do
@@ -237,7 +237,7 @@ end
 local ButtonPositions = {
 	["box"] = {{"CENTER",0,"CENTER"},{"LEFT",1,"RIGHT"},{"TOP",2,"BOTTOM"},{"LEFT",1,"RIGHT"}},
 	["horizontal"] = {{"CENTER",0,"CENTER"},{"LEFT",1,"RIGHT"},{"LEFT",1,"RIGHT"},{"LEFT",1,"RIGHT"}},
-	["vertical"] = {{"CENTER",0,"CENTER"},{"TOP",1,"BOTTOM"},{"TOP",1,"BOTTOM"},{"TOP",1,"BOTTOM"}}	
+	["vertical"] = {{"CENTER",0,"CENTER"},{"TOP",1,"BOTTOM"},{"TOP",1,"BOTTOM"},{"TOP",1,"BOTTOM"}}
 }
 
 
@@ -283,7 +283,7 @@ local BarMiniIconPos = {
 
 
 function TotemTimers.CreateCastButtons()
-    for i = 1,4 do 
+    for i = 1,4 do
         TTActionBars:new(7, XiTimers.timers[i].button, _G["TotemTimers_CastBar"..i], TotemTimersFrame)
         for j = 1,7 do
             local button = _G["TT_ActionButton"..i..j]
@@ -310,7 +310,7 @@ function TotemTimers.CreateCastButtons()
                         end
                     end
                 end
-				
+
 			button:SetAttribute("SpellIDs", TotemTimers.NameToSpellID)
 
             button:SetAttribute("_ondragstart",[[if IsShiftKeyDown() and self:GetAttribute("*spell1")~=0 then
@@ -339,7 +339,7 @@ function TotemTimers.PositionCastButtons()
     for i = 1,4 do
         TTActionBars.bars[i]:SetDirection(Profile.CastBarDirection, Profile.Arrange)
     end
-    
+
     -- and position totem cast buttons
     local pos = Profile.CastButtonPosition
     if Profile.Arrange == "horizontal" then
@@ -351,7 +351,7 @@ function TotemTimers.PositionCastButtons()
                 pos = "BOTTOM"
             end
         end
-    elseif Profile.Arrange == "vertical" then        
+    elseif Profile.Arrange == "vertical" then
         if pos ~= "LEFT" and pos ~= "RIGHT" then
             local dir = TTActionBars.bars[1]:CalcDirection(Profile.CastBarDirection, Profile.Arrange)
             if dir == "left" then

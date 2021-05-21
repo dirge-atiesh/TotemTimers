@@ -54,7 +54,7 @@ TotemTimers.SpellIDs = {
     FrostbrandWeapon = 8033,
     WindfuryWeapon = 8232,
 
-    EnamoredWaterSpirit = 24854 -- Water Totem trinket
+    -- EnamoredWaterSpirit = 24854 -- Water Totem trinket
     --[[ WaterShield = 52127,
     EarthShield = 974,
     TotemicCall = 36936,
@@ -141,6 +141,11 @@ TotemData = {
         element = EARTH_TOTEM_SLOT,
         noRangeCheck = true,
     },
+    [TotemTimers.SpellIDs.StoneskinR2] = {
+        element = EARTH_TOTEM_SLOT,
+        noRangeCheck = true,
+    },
+
     [TotemTimers.SpellIDs.Stoneclaw] = {
         element = EARTH_TOTEM_SLOT,
         noRangeCheck = true,
@@ -162,6 +167,12 @@ TotemData = {
         noRangeCheck = true,
         warningPoint = 5,
 	},
+        [TotemTimers.SpellIDs.SearingR2] = {
+           element = FIRE_TOTEM_SLOT,
+        noRangeCheck = true,
+        warningPoint = 5,
+	},
+
     [TotemTimers.SpellIDs.FireNova] = {
         element = FIRE_TOTEM_SLOT,
         noRangeCheck = true,
@@ -184,10 +195,16 @@ TotemData = {
     },
 
     [TotemTimers.SpellIDs.HealingStream] = {
-		element = WATER_TOTEM_SLOT,
+       element = WATER_TOTEM_SLOT,
         range = 1600,
-		warningPoint = 4,
-	},
+        warningPoint = 4,
+    },
+    [TotemTimers.SpellIDs.HealingStreamR2] = {
+       element = WATER_TOTEM_SLOT,
+       range = 1600,
+       warningPoint = 4,
+    },
+
     [TotemTimers.SpellIDs.ManaTide] = {
         element = WATER_TOTEM_SLOT,
         warningPoint = 2,
@@ -210,13 +227,13 @@ TotemData = {
         element = WATER_TOTEM_SLOT,
         noRangeCheck = true,
     },
-	[TotemTimers.SpellIDs.Grounding] = {
-		element = AIR_TOTEM_SLOT,
-        partyOnly = true,
-        range = 100,
-		warningPoint = 5,
-		flashInterval = 10,
-	},
+    [TotemTimers.SpellIDs.Grounding] = {
+       element = AIR_TOTEM_SLOT,
+       partyOnly = true,
+       range = 100,
+       warningPoint = 5,
+       flashInterval = 10,
+    },
     [TotemTimers.SpellIDs.NatureResistance] = {
         element = AIR_TOTEM_SLOT,
         noRangeCheck = true,
